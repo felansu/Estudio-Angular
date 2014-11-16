@@ -1,0 +1,56 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="AngularJS, bootstrap">
+    <meta name="author" content="Ferran Gonzalez Alonso">
+
+    <title>Fábrica 1</title>
+
+    <link rel="stylesheet" href="bootstrap.min.css">
+
+    <script src="angular.min.js"></script>
+    <script src="fabrica.js"></script>
+</head>
+
+<body ng-app="miAplicacion">
+<div>
+    <div class="row">
+        <div class="col-md-offset-4 col-md-4">
+            <h2 class="center-block">Share date | Fabricas en Angular</h2>
+            <hr/>
+            <div class="panel panel-primary">
+                <div class="panel-body" ng-controller="controladorA_SF">
+                    <span class="lead text-info">{{informacion}}</span>
+
+                    <div>
+                        <input type="text" ng-model="informacion">
+                    </div>
+                </div>
+                <div class="panel-body" ng-controller="controladorB_SF">
+                    <span class="lead text-info">{{informacion}}</span>
+
+                    <div>
+                        <input type="text" ng-model="informacion">
+                    </div>
+                </div>
+                <hr><hr>
+                <div class="panel-body" ng-controller="controladorA_CF">
+                    <span class="lead text-info">{{dato.informacion}}</span>
+
+                    <div>
+                        <input type="text" ng-model="dato.informacion">
+                    </div>
+                </div>
+                <div class="panel-body" ng-controller="controladorB_CF">
+                    <span class="lead text-info">{{dato.informacion}}</span>
+
+                    <div>
+                        <input type="text" ng-model="dato.informacion">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
