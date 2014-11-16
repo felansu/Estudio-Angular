@@ -1,0 +1,53 @@
+<html>
+<head>
+    <!-- Metadatas básicos -->
+    <meta charset="UTF-8">
+    <meta name="description" content="Ex 1 - Primera aplicación con AngularJS">
+    <meta name="keywords" content="AngularJS, bootstrap">
+    <meta name="author" content="Ferran Gonzalez Alonso">
+
+    <title>Controladoeres</title>
+
+    <!-- Importamos los estilos de bootstrap y uno personalizado -->
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="listadetareas.css">
+
+    <!-- Importamos AngularJS y nuestro controlador de tareas -->
+    <script src="angular.min.js"></script>
+    <script src="controladorTareas.js"></script>
+</head>
+
+<!-- Con 'ng-app' determinamos que es una aplicación Angular -->
+<body ng-app>
+<!-- Determinamos que esta 'div' trabajará con el controlador 'controladorTareas' -->
+<div ng-controller="controladorTareas">
+    <div class="row">
+        <div class="col-md-offset-4 col-md-3">
+            <h2 class="center-block">Lista de Tareas</h2>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <span>{{contarTareasRestantes()}} tareas realizadas de {{tareas.length}}</span>
+                    <a class="text-danger" href="" ng-click="limpiarTareas()"> [ Limpiar tareas ] </a>
+
+                    <ul class="list-unstyled">
+                        <!-- Parecido con un Foreach en Java, percorre 'tareas' y coloca cada elemento en tarea -->
+                        <li ng-repeat="tarea in tareas">
+                            <input type="checkbox" ng-model="tarea.realizada"/>
+
+                            <!-- Si la tarea está marcada (true), pasará a utilizar el estilo 'realizada-true' -->
+                            <span class="realizada-{{tarea.realizada}}">{{tarea.descripcion}}</span>
+                        </li>
+                    </ul>
+
+                    <!-- Formulário, al ser submetido llamará a la función 'nuevaTarea' -->
+                    <form ng-submit="nuevaTarea()">
+                        <input type="text" size="30" ng-model="descripcion"/>
+                        <button class="btn btn-primary" type="submit">Salvar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
