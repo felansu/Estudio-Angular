@@ -1,0 +1,69 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ex 1 - Primera aplicación con AngularJS">
+    <meta name="keywords" content="AngularJS, bootstrap">
+    <meta name="author" content="Ferran Gonzalez Alonso">
+
+    <title>Controladoeres</title>
+
+    <link rel="stylesheet" href="bootstrap.min.css">
+
+    <script src="angular.min.js"></script>
+    <script src="filtros.js"></script>
+    <script src="https://code.angularjs.org/1.3.2/i18n/angular-locale_es-es.js"></script>
+</head>
+
+<body ng-app>
+<div ng-controller="filtrosControlador">
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+            <h2 class="center-block">Empleados | Filtros en Angular</h2>
+            <hr/>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                        <input type="text" class="form-control" placeholder="Buscar empleado" ng-model="buscar.altura"/>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <h4 class="panel-heading">Datos estadísticos</h4>
+                    <table class="table table-striped">
+                        <thead>
+                        <tr class="col-sm-pull-3">
+                            <th>
+                                <a href="" ng-click="ordenarPor('nombre')">
+                                    Nombre
+                                </a>
+                                <span class="caret" style="cursor:pointer" ng-click="ordenarPor('-nombre')"/>
+                            </th>
+                            <th>Apellido</th>
+                            <th>Segundo apellido</th>
+                            <th>Altura</th>
+                            <th>Salario</th>
+                            <th>Telefono</th>
+                            <th>Fecha registro</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="empleado in empleados | orderBy:ordenSelecionado | filter:buscar">
+                            <td>{{empleado.nombre | uppercase}}</td>
+                            <td>{{empleado.apellido | lowercase}}</td>
+                            <td>{{empleado.segundoApellido}}</td>
+                            <td>{{empleado.altura | number:1}}</td>
+                            <td>{{empleado.salario | currency}}</td>
+                            <td>{{empleado.telefono}}</td>
+                            <td>{{empleado.fechaRegistro | date:'fullDate'}} a las {{empleado.fechaRegistro |
+                                date:'HH:m'}}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
